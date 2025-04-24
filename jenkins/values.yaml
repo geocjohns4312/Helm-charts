@@ -6,14 +6,15 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
+  type: NodePort
   port: 8080
+  nodePort: 30080 # Specify a custom NodePort or leave it blank for Kubernetes to assign one
 
-persistence:
-  enabled: true
-  accessMode: ReadWriteOnce
-  size: 8Gi
-  storageClass: gp2
+# persistence:
+#   enabled: true
+#   accessMode: ReadWriteOnce
+#   size: 8Gi
+#   storageClass: gp2
 
 adminUser: admin
 adminPassword: admin123

@@ -22,10 +22,3 @@ spec:
               value: {{ .Values.adminUser | quote }}
             - name: JENKINS_ADMIN_PASSWORD
               value: {{ .Values.adminPassword | quote }}
-          volumeMounts:
-            - name: jenkins-home
-              mountPath: /var/jenkins_home
-      volumes:
-        - name: jenkins-home
-          persistentVolumeClaim:
-            claimName: jenkins-pvc
