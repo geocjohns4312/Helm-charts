@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jenkins.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "jenkins.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "jenkins.name" . }}
+    spec:
+      containers:
+        - name: jenkins
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: JENKINS_ADMIN_ID
+              value: {{ .Values.adminUser | quote }}
+            - name: JENKINS_ADMIN_PASSWORD
+              value: {{ .Values.adminPassword | quote }}
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
