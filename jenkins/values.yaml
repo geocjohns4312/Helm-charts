@@ -10,11 +10,15 @@ service:
   port: 8080
   nodePort: 30080 # Specify a custom NodePort or leave it blank for Kubernetes to assign one
 
-# persistence:
-#   enabled: true
-#   accessMode: ReadWriteOnce
-#   size: 8Gi
-#   storageClass: gp2
-
 adminUser: admin
 adminPassword: admin123
+
+ingress:
+  enabled: false
+  className: nginx
+  host: jenkins.example.com
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  tls:
+    enabled: false
+    tlsSecret: jenkins-tls
