@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: cp-jenkins-ingress
   namespace: {{ .Values.namespace }}
-  labels:
-    {{include "jenkins.labels" . }}
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
