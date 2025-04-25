@@ -5,13 +5,11 @@ metadata:
   labels:
     {{- include "jenkins.labels" . | nindent 4 }}
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 8080
       targetPort: 8080
       protocol: TCP
-      nodePort: {{ .Values.service.nodePort | default 30080 }}
   selector:
     app.kubernetes.io/name: {{ include "jenkins.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
-
