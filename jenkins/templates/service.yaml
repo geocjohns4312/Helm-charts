@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: cp-jenkins
   labels:
-    {{- include "jenkins.labels" . | nindent 4 }}
+    {{- include "jenkins.name" . | nindent 4 }}
 spec:
   type: ClusterIP
   ports:
