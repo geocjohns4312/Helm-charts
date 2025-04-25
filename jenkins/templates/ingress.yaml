@@ -1,8 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jenkins-ingress
-  namespace: default
+  name: cp-jenkins-ingress
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{include "jenkins.labels" . }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
@@ -15,6 +17,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: jenkins
+                name: cp-jenkins-service
                 port:
                   number: 8080
