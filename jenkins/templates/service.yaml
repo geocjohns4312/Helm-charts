@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: cp-jenkins
   labels:
-    {{include "jenkins.labels" . }}
+    {{- include "jenkins.labels" . | nindent 4 }}
 spec:
   type: NodePort
   ports:
@@ -14,3 +14,4 @@ spec:
   selector:
     app.kubernetes.io/name: {{ include "jenkins.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
+
