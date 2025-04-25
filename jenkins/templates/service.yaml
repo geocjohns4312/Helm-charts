@@ -11,5 +11,9 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app.kubernetes.io/name: {{ include "jenkins.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    matchLabels:
+      app: {{ include "jenkins.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "jenkins.name" . }}
