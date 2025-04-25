@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: cp-jenkins-ingress
   namespace: {{ .Values.namespace }}
-  labels:
-    {{include "jenkins.labels" . }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
