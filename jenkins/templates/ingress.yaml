@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cp-jenkins-ingress
+  name: cp-jenkins
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -15,7 +15,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: cp-jenkins-service
+                name: cp-jenkins
                 port:
                   number: 8080
 
