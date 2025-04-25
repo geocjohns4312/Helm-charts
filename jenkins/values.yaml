@@ -1,5 +1,4 @@
 replicaCount: 1
-namespace: cp-jenkins
 
 image:
   repository: jenkins/jenkins
