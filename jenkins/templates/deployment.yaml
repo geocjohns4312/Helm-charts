@@ -22,3 +22,5 @@ spec:
               value: {{ .Values.adminUser | quote }}
             - name: JENKINS_ADMIN_PASSWORD
               value: {{ .Values.adminPassword | quote }}
+            - name: JENKINS_OPTS
+              value: "--prefix=/jenkins"
