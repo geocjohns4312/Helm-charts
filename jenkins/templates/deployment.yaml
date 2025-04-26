@@ -6,11 +6,11 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "jenkins.name" . }}
+      app: cp-jenkins
   template:
     metadata:
       labels:
-        app: {{ include "jenkins.name" . }}
+        app: cp-jenkins
     spec:
       containers:
         - name: jenkins

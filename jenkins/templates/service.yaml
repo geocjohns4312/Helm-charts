@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: cp-jenkins
   labels:
-    {{- include "jenkins.name" . | nindent 4 }}
+    app: cp-jenkins
 spec:
   type: ClusterIP
   ports:
@@ -11,9 +11,4 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    matchLabels:
-      app: {{ include "jenkins.name" . }}
-  template:
-    metadata:
-      labels:
-        app: {{ include "jenkins.name" . }}
+    app: cp-jenkins
