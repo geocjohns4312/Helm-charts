@@ -12,3 +12,6 @@ service:
 
 adminUser: admin
 adminPassword: admin123
+
+controller:
+  jenkinsUrl: "/jenkins"
