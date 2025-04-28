@@ -20,7 +20,9 @@ spec:
             - containerPort: 8080
           env:
             - name: JAVA_OPTS
-              value: "-Dhudson.model.DirectoryBrowserSupport.CSP='' -Djenkins.model.JenkinsLocationConfiguration.prefix=/jenkins"
+              value: "-Djenkins.install.runSetupWizard=false"
+            - name: JENKINS_OPTS
+              value: "--prefix=/jenkins"
             - name: JENKINS_ADMIN_ID
               value: {{ .Values.adminUser | quote }}
             - name: JENKINS_ADMIN_PASSWORD
