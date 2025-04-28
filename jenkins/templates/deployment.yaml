@@ -14,16 +14,16 @@ spec:
         app: cp-jenkins
     spec:
       containers:
-        - name: jenkins
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports:
-            - containerPort: 8080
-          env:
-            - name: JAVA_OPTS
-              value: "-Djenkins.install.runSetupWizard=false"
-            - name: JENKINS_OPTS
-              value: "--prefix=/jenkins"
-            - name: JENKINS_ADMIN_ID
-              value: {{ .Values.adminUser | quote }}
-            - name: JENKINS_ADMIN_PASSWORD
-              value: {{ .Values.adminPassword | quote }}
+      - name: jenkins
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: JENKINS_OPTS
+          value: "--prefix=/jenkins --webroot=/var/jenkins_home/war"
+        - name: JENKINS_JAVA_OPTIONS
+          value: "-Djenkins.install.runSetupWizard=false -Djenkins.model.Jenkins.rootUrl=http://localhost:8080/jenkins"
+        - name: JENKINS_ADMIN_ID
+          value: {{ .Values.adminUser | quote }}
+        - name: JENKINS_ADMIN_PASSWORD
+          value: {{ .Values.adminPassword | quote }}

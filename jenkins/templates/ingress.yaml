@@ -8,9 +8,15 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    # Optional AWS-specific annotations if needed:
-    service.beta.kubernetes.io/aws-load-balancer-type: "external"
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    # Force ALB to preserve the /jenkins prefix
+    alb.ingress.kubernetes.io/actions.rewrite-path: |
+      {
+        "type": "rewrite",
+        "redirectConfig": {
+          "path": "/jenkins#{path}",
+          "statusCode": "HTTP_301"
+        }
+      }
 spec:
   ingressClassName: nginx
   rules:
