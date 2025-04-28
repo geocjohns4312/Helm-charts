@@ -10,10 +10,10 @@ spec:
   rules:
     - http:
         paths:
-          - path: /jenkins(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /jenkins
+            pathType: Prefix
             backend:
               service:
-                name: jenkins
+                name: cp-jenkins
                 port:
                   number: 8080
