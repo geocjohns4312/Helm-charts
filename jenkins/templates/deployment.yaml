@@ -19,11 +19,13 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: JENKINS_OPTS
-          value: "--prefix=/jenkins --webroot=/var/jenkins_home/war"
-        - name: JENKINS_JAVA_OPTIONS
-          value: "-Djenkins.install.runSetupWizard=false -Djenkins.model.Jenkins.rootUrl=http://localhost:8080/jenkins"
         - name: JENKINS_ADMIN_ID
           value: {{ .Values.adminUser | quote }}
         - name: JENKINS_ADMIN_PASSWORD
           value: {{ .Values.adminPassword | quote }}
+        - name: JENKINS_OPTS
+          value: "--prefix=/jenkins --webroot=/var/jenkins_home/war"
+        - name: JAVA_OPTS
+          value: >
+            -Djenkins.install.runSetupWizard=false
+            -Djenkins.model.Jenkins.rootUrl=http://a09dfe47f3ea541ac82425ea9bf69fe4-1565111427.us-east-1.elb.amazonaws.com/jenkins
