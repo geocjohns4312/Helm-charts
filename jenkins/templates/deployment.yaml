@@ -17,6 +17,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 8080
+          args:
+            - "--prefix=/jenkins"
           env:
             - name: JENKINS_ADMIN_ID
               value: {{ .Values.adminUser | quote }}
