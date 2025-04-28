@@ -24,8 +24,8 @@ spec:
         - name: JENKINS_ADMIN_PASSWORD
           value: {{ .Values.adminPassword | quote }}
         - name: JENKINS_OPTS
-          value: "--prefix=/jenkins --webroot=/var/jenkins_home/war"
-        - name: JENKINS_JAVA_OPTIONS
+          value: "--prefix=/jenkins"
+        - name: JAVA_OPTS
           value: >
             -Djenkins.install.runSetupWizard=false
             -Djenkins.model.Jenkins.rootUrl=http://a09dfe47f3ea541ac82425ea9bf69fe4-1565111427.us-east-1.elb.amazonaws.com/jenkins
