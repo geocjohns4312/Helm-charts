@@ -11,7 +11,6 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: a4d0d5fa78ddf4ea7b9ff53064a5e1ae-47d05e2a92488dd3.elb.us-east-1.amazonaws.com
       http:
         paths:
           - path: /jenkins
