@@ -24,5 +24,5 @@ spec:
               value: {{ .Values.adminUser | quote }}
             - name: JENKINS_ADMIN_PASSWORD
               value: {{ .Values.adminPassword | quote }}
-            - name: JENKINS_OPTS
-              value: "--prefix=/jenkins"
+            - name: JAVA_OPTS
+              value: "-Dhudson.model.DirectoryBrowserSupport.CSP='' -Djenkins.model.JenkinsLocationConfiguration.prefix=/jenkins"
