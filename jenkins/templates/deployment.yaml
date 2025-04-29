@@ -25,8 +25,3 @@ spec:
           value: {{ .Values.adminPassword | quote }}
         - name: JENKINS_OPTS
           value: "--prefix=/jenkins"
-        - name: JAVA_OPTS
-          value: >
-            -Djenkins.install.runSetupWizard=false
-            -Djenkins.model.Jenkins.rootUrl=http://a09dfe47f3ea541ac82425ea9bf69fe4-1565111427.us-east-1.elb.amazonaws.com/jenkins
-            -Dhudson.footerURL=http://a09dfe47f3ea541ac82425ea9bf69fe4-1565111427.us-east-1.elb.amazonaws.com/jenkins
