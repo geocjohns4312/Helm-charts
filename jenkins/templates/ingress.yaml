@@ -6,7 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/add-base-url : "true"
+    nginx.ingress.kubernetes.io/add-base-url: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -14,6 +14,7 @@ spec:
     http:
       paths:
       - path: /jenkins
+        pathType: Prefix
         backend:
           service:
             name: cp-jenkins
