@@ -25,3 +25,10 @@ spec:
           value: {{ .Values.adminPassword | quote }}
         - name: JENKINS_OPTS
           value: "--prefix=/jenkins"
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+      volumes:
+      - name: jenkins-home
+        persistentVolumeClaim:
+          claimName: jenkins-pvc
