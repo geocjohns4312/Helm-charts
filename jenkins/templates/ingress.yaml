@@ -5,12 +5,17 @@ metadata:
   namespace: cp-jenkins
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/add-base-url : "true"
 spec:
   ingressClassName: nginx
   rules:
-  - http:
+  - host:
+    http:
       paths:
       - path: /jenkins
         backend:
-            serviceName: cp-jenkins
-            servicePort: 8080
+          service:
+            name: cp-jenkins
+            port:
+              number: 8080
